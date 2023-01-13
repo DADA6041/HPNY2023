@@ -16,6 +16,7 @@
             <h1>HPNY 2023</h1>
         </header>
         <section class="cont-main">
+            <h2 class="sr-only">게시글 디테일 페이지</h2>
             <!-- <a href="" class="btn-new-post">새 글 작성하기</a>
             <ul>
                 <li>
@@ -29,7 +30,7 @@
                 </li>
             </ul> -->
 
-            <form method="post">
+            <!-- <form method="post">
                 <label for="imgFile" class="img-file">
                     <img src="./static/images/img_icon.png" alt="">
                 </label>
@@ -40,7 +41,41 @@
                 <label for="postDesc" class="inp-desc">내용</label>
                 <textarea name="postDesc" cols="40" rows="8" placeholder="글 내용을 입력해주세요."></textarea>
                 <button type="submit" class="btn-send-post">등록하기</button>
-            </form>
+            </form> -->
+
+            <img class="detail-img" src="./static/images/test.png" alt="">
+            <section class="cont-post-detail">
+                <h3 class="sr-only">게시글 세부 섹션</h3>
+                <strong>신년 계획</strong>
+                <time>2023.01.10</time>
+                <p>2023 계획 세우셨나요? 저는 아직 못세웠어요.작년에 계획을 과하게 세우고 많이 실패했던 기억이 있어서..
+                </p>
+                <button type="button">
+                    <img src="./static/images/edit_icon.png" alt="수정하기">
+                </button>
+                <button type="button">
+                    <img src="./static/images/big_delete_icon.png" alt="삭제하기">
+                </button>
+            </section>
+            <section class="cont-comment">
+                <h3 class="sr-only">댓글 섹션</h3>
+                <ul>
+                    <li>
+                        <p>너무 슬퍼하지 마세요! 다들 비슷해요 ㅎㅎ올해는 잘 할 수 있을거에요 ! 화이팅 !</p>
+                        <button type="button">
+                            <img src="./static/images/delete_icon.png" alt="댓글 삭제하기">
+                        </button>
+                    </li>
+                </ul>
+
+                <form action="">
+                    <label for="comment-input" class="sr-only">댓글쓰기</label>
+                    <input type="text" id="comment-input">
+                    <button type="submit">
+                        <img src="./static/images/send_icon.png" alt="">
+                    </button>
+                </form>
+            </section>
         </section>
     </div>
     <!-- <div id="root"></div> -->

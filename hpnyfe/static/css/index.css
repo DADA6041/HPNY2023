@@ -56,6 +56,17 @@ textarea:focus {
     font-size: 16px;
 }
 
+.sr-only {
+    overflow: hidden;
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+}
+
 /* layout */
 
 /* main */
@@ -68,7 +79,7 @@ textarea:focus {
 }
 
 #root .cont-main {
-    padding: 20px 16px;
+    /* padding: 16px; */
     height: calc(100% - 83px);
     overflow-y: auto;
 }
@@ -121,7 +132,6 @@ textarea:focus {
     overflow: hidden;
 }
 
-
 #root ul li a {
     display: flex;
     justify-content: space-between;
@@ -159,7 +169,7 @@ ul li .thumbnail {
 }
 
 /* new post */
-form{
+form {
     height: 100%;
 }
 
@@ -182,23 +192,23 @@ form .inp-img-file {
 }
 
 form .inp-title,
-form .inp-desc{
+form .inp-desc {
     display: block;
     margin-bottom: 18px;
 }
 
-form .inp-desc{
+form .inp-desc {
     font-size: 20px;
 }
 
-form .inp-title-area{
+form .inp-title-area {
     width: 100%;
     margin-bottom: 36px;
     padding-bottom: 6px;
     border-bottom: 2px solid #E8E8E8;
 }
 
-textarea{
+textarea {
     width: 100%;
     resize: none;
 }
@@ -216,4 +226,10 @@ textarea{
     text-align: center;
     line-height: 26px;
     font-size: 22px;
+}
+
+/* post  detail*/
+
+.detail-img {
+    height: 265px;
 }
