@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./static/css/index.css">
 </head>
 <body>
-    <div class="root">
+    <div id="root">
         <header class="top-bar">
             <button type="button" class="go-back">
                 <img src="./static/images/back_icon.png" alt="뒤로가기">
@@ -16,7 +16,7 @@
             <h1>HPNY 2023</h1>
         </header>
         <section class="cont-main">
-            <a href="" class="btn-new-post">새 글 작성하기</a>
+            <!-- <a href="" class="btn-new-post">새 글 작성하기</a>
             <ul>
                 <li>
                     <a href="">
@@ -27,7 +27,20 @@
                         </div>
                     </a>
                 </li>
-            </ul>
+            </ul> -->
+
+            <form method="post">
+                <label for="imgFile" class="img-file">
+                    <img src="./static/images/img_icon.png" alt="">
+                </label>
+                <input type="file" id="imgFile" class="inp-img-file" accept="image/*" name="imgFile">
+
+                <label for="inpTitle" class="inp-title">제목</label>
+                <input name="inpTitle" class="inp-title-area" type="text" placeholder="글 제목을 입력해주세요.">
+                <label for="postDesc" class="inp-desc">내용</label>
+                <textarea name="postDesc" cols="40" rows="8" placeholder="글 내용을 입력해주세요."></textarea>
+                <button type="submit" class="btn-send-post">등록하기</button>
+            </form>
         </section>
     </div>
     <!-- <div id="root"></div> -->
