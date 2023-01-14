@@ -70,7 +70,7 @@ textarea:focus {
 /* layout */
 
 /* main */
-#root {
+.container {
     max-width: 360px;
     margin: 0 auto;
     background-color: #fff;
@@ -78,13 +78,16 @@ textarea:focus {
     box-shadow: rgb(0 0 0 / 16%) 0px 0px 8px;
 }
 
-#root .cont-main {
-    /* padding: 16px; */
+.container .cont-main {
+    padding: 20px 16px;
     height: calc(100% - 83px);
     overflow-y: auto;
 }
+.container .cont-post {
+    padding: 16px;
+}
 
-#root .top-bar {
+.container .top-bar {
     height: 83px;
     display: flex;
     justify-content: space-between;
@@ -126,19 +129,19 @@ textarea:focus {
     background-size: contain;
 }
 
-#root .mainpage-ul li {
+.container .mainpage-ul li {
     border: 1.5px solid #E2E2E2;
     border-radius: 12px;
     overflow: hidden;
 }
 
-#root .mainpage-ul li a {
+.container .mainpage-ul li a {
     display: flex;
     justify-content: space-between;
     gap: 16px;
 }
 
-#root .mainpage-ul li+li {
+.container .mainpage-ul li+li {
     margin-top: 24px;
 }
 
