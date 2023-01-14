@@ -90,7 +90,7 @@ textarea:focus {
     justify-content: space-between;
     align-items: center;
     padding: 14px 20px 14px 8px;
-    background-color: antiquewhite;
+    background-color: #fff;
 }
 
 .top-bar .go-back {
@@ -126,23 +126,23 @@ textarea:focus {
     background-size: contain;
 }
 
-#root ul li {
+#root .mainpage-ul li {
     border: 1.5px solid #E2E2E2;
     border-radius: 12px;
     overflow: hidden;
 }
 
-#root ul li a {
+#root .mainpage-ul li a {
     display: flex;
     justify-content: space-between;
     gap: 16px;
 }
 
-#root ul li+li {
+#root .mainpage-ul li+li {
     margin-top: 24px;
 }
 
-ul li .thumbnail {
+.mainpage-ul li .thumbnail {
     width: 76px;
     height: 76px;
     object-fit: cover;
@@ -169,9 +169,9 @@ ul li .thumbnail {
 }
 
 /* new post */
-form {
+/* form {
     height: 100%;
-}
+} */
 
 form .img-file {
     padding: 25px 141px;
@@ -232,4 +232,105 @@ textarea {
 
 .detail-img {
     height: 265px;
+}
+
+.cont-post-detail {
+    padding: 20px 16px 11px;
+    border-bottom: 1px solid #E2E2E2;
+}
+
+.cont-post-detail .postdetail-title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.cont-post-detail .postdetail-date {
+    font-size: 10px;
+    display: block;
+    margin: 12px 0 16px;
+}
+
+.cont-post-detail .postdetail-desc {
+    font-size: 14px;
+}
+
+.cont-post-detail .btn-wrap {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.cont-post-detail .btn-edit,
+.cont-post-detail .btn-delete-post {
+    background-color: #D9D9D9;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont-post-detail .btn-edit img,
+.cont-post-detail .btn-delete-post img {
+    width: 25px;
+}
+
+.comment-ul{
+    padding: 16px;
+}
+.comment-ul li {
+    display: flex;
+}
+
+.comment-ul li p {
+    font-size: 12px;
+}
+
+.comment-ul li .btn-delete-comment {
+    width: 18px;
+    height: 18px;
+    padding: 4.5px;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-ul li .btn-delete-comment img {
+    width: 9px;
+}
+
+.form-send-comment {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    max-width: 360px;
+    padding: 16px;
+    background-color: #fff;
+}
+
+.form-send-comment .inp-comment {
+    background-color: #F0F0F0;
+    border-radius: 6px;
+    flex-grow: 1;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.form-send-comment button {
+    padding: 6px 5px;
+    border: 1px solid #E2E2E2;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-send-comment button img {
+    width: 23px;
 }
