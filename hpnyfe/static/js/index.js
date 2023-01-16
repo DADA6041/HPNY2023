@@ -13,7 +13,7 @@ const router = async () => {
     const routes = [
         { path: "/", view: Home },
         { path: "/newpost", view: NewPost },
-        { path: "/postdetail", view: PostDetail},
+        { path: "/postdetail", view: PostDetail },
     ];
 
     const pageMatches = routes.map((route) => {
@@ -36,7 +36,11 @@ const router = async () => {
 
     document.querySelector("#root").innerHTML = await viewHtml.getHtml();
 
-    // console.log(match.route.view());
+    if (location.pathname === "/") {
+        document.querySelector(".go-back").style.visibility = "hidden";
+    } else {
+        document.querySelector(".go-back").style.visibility = "inherit";
+    }
 };
 
 window.addEventListener("popstate", router); // 재렌더링
@@ -50,3 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     router();
 })
+
+const backBtn = document.querySelector(".go-back");
+
+backBtn.addEventListener("click", () => history.back());
