@@ -1,8 +1,6 @@
-// console.log("JS is loaded!");
 import Home from "./pages/Home.js";
 import NewPost from "./pages/NewPost.js";
 import PostDetail from "./pages/PostDetail.js";
-
 
 const navigateTo = (url) => {
     history.pushState(null, null, url);
@@ -33,11 +31,14 @@ const router = async () => {
     }
 
     const viewHtml = new match.route.view();
-
     document.querySelector("#root").innerHTML = await viewHtml.getHtml();
+
+    const newPost = new NewPost();
+    newPost.bindsendEvent();
 
     if (location.pathname === "/") {
         document.querySelector(".go-back").style.visibility = "hidden";
+        // console.log(process.env.ACCESS_KEY);
     } else {
         document.querySelector(".go-back").style.visibility = "inherit";
     }

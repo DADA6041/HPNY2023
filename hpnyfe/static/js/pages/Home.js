@@ -1,4 +1,3 @@
-// import { response } from "express";
 import AbstractView from "./AbstractView.js";
 
 export default class extends AbstractView {
@@ -13,7 +12,8 @@ export default class extends AbstractView {
         })
             .then((response) => response.json())
             .then((response) => response.data.posts)
-            .then((response) => response);
+            .then((response) => response)
+            .catch((err) => console.log(err));
 
             console.log(response)
         return `
