@@ -4,7 +4,12 @@ export default class extends AbstractView {
     constructor(params) {
         super(params);
         this.setTitle("게시글 상세 페이지");
-        console.log(this.params.id)
+
+        this.btnPostEdit = document.querySelector(".btn-edit");
+        this.btnPostDelete = document.querySelector(".btn-delete-post");
+        this.btnCommentDelete = document.querySelectorAll(".btn-delete-comment");
+        this.btnCommentSend = document.querySelector(".btn-send-comment");
+        this.commentInp = document.querySelector("#comment-input");
     }
 
     async getHtml() {
@@ -12,27 +17,26 @@ export default class extends AbstractView {
         const bigDeleteIcon = "https://raw.githubusercontent.com/DADA6041/HPNY2023/main/hpnyfe/static/images/big_delete_icon.png";
         const deleteIcon = "https://raw.githubusercontent.com/DADA6041/HPNY2023/main/hpnyfe/static/images/delete_icon.png";
         const sendIcon = "https://raw.githubusercontent.com/DADA6041/HPNY2023/main/hpnyfe/static/images/send_icon.png";
-
+        console.log(this.params.id)
         const response = await fetch(`${this.url}/post/${this.params.id}`, {
             method: "GET"
         })
             .then((response) => response.json())
-            .then((response) => response.data.post)
+            .then((response) => response.data)
             .then((response) => response)
             .catch((err) => console.log(err));
 
-            console.log(response)
 
         return `
             <section class="cont-postdetail">
                 <h2 class="sr-only">게시글 상세 페이지</h2>
-                <img class="detail-img" src=${response.image} alt="">
+                <img class="detail-img" src=${response.post.image} alt="">
                 <section class="cont-post-detail">
                     <h3 class="sr-only">게시글 세부 섹션</h3>
-                    <strong class="postdetail-title">${response.title}</strong>
-                    <time class="postdetail-date">${response.createdAt}</time>
+                    <strong class="postdetail-title">${response.post.title}</strong>
+                    <time class="postdetail-date">${response.post.createdAt}</time>
                     <p class="postdetail-desc">
-                        ${response.content}
+                        ${response.post.content}
                     </p>
                     <div class="btn-wrap">
                         <button type="button" class="btn-edit">
@@ -46,18 +50,26 @@ export default class extends AbstractView {
                 <section class="cont-comment">
                     <h3 class="sr-only">댓글 섹션</h3>
                     <ul class="comment-ul">
-                        <li>
-                            <p class="comment-desc">너무 슬퍼하지 마세요! 다들 비슷해요 ㅎㅎ올해는 잘 할 수 있을거에요 ! 화이팅 !</p>
-                            <button type="button" class="btn-delete-comment">
-                                <img src=${deleteIcon} alt="댓글 삭제하기">
-                            </button>
-                        </li>
+                        ${(!response.comments.length) ?
+                        ""
+                        :
+                        response.comments.map((data) => {
+                                return `
+                                    <li>
+                                        <p class="comment-desc">${data.content}</p>
+                                        <button type="button" class="btn-delete-comment" data-comment-id=${data.commentId}>
+                                            <img src=${deleteIcon} alt="댓글 삭제하기">
+                                        </button>
+                                    </li>
+                                    `
+                            }).join("")
+                        }
                     </ul>
 
                     <form class="form-send-comment">
                         <label for="comment-input" class="sr-only">댓글쓰기</label>
                         <input type="text" id="comment-input" class="inp-comment">
-                        <button type="submit">
+                        <button type="submit" class="btn-send-comment">
                             <img src=${sendIcon} alt="댓글 전송하기">
                         </button>
                     </form>
@@ -65,4 +77,79 @@ export default class extends AbstractView {
             </section>
         `;
     }
+
+    async bindBtnEvents() {
+        let link = document.location.href.split("/").slice(-1)[0];
+        // console.log(link);
+        // console.log(this.btnPostEdit);
+        // console.log(this.btnPostDelete);
+        // console.log(this.btnCommentDelete);
+        // console.log(this.commentInp);
+        this.btnPostEdit.addEventListener("click", (e) => {
+            e.preventDefault();
+            console.log('수정');
+        })
+
+        this.btnPostDelete.addEventListener("click", (e) => {
+            e.preventDefault();
+            console.log('포스트 삭제');
+            this.deletePost(link);
+        })
+
+        this.btnCommentSend.addEventListener("click", (e) => {
+            e.preventDefault();
+            this.sendComment(link, this.commentInp.value);
+        })
+
+        this.btnCommentDelete.forEach((button) => {
+            button.addEventListener("click", (e) => {
+                e.preventDefault();
+                this.deleteComment(e.currentTarget.dataset.commentId);
+                // console.log('댓글 삭제');
+                // console.log(e.currentTarget.dataset.commentId);
+            })
+        })
+    }
+
+    async deletePost(link) {
+        try {
+            const res = await fetch(`${this.url}/post/${link}`, {
+                method: "DELETE",
+            })
+                .then((res) => res.json())
+                .then((res) => location.replace("/"));
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    async sendComment(link, commentdesc) {
+        try {
+            const response = await fetch(`${this.url}/comment/${link}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "content": `${commentdesc}`,
+                }),
+            })
+                .then((response) => location.reload()); /* console.log(response) */
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    async deleteComment(commentId) {
+        try {
+            const res = await fetch(`${this.url}/comment/${commentId}`, {
+                method: "DELETE",
+            })
+                .then((res) => res.json())
+                .then((res) => location.reload());
+        } catch (err) {
+            console.log(err);
+        }
+    }
 }
+

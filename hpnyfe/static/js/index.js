@@ -20,7 +20,7 @@ const router = async () => {
     const routes = [
         { path: "/", view: Home },
         { path: "/newpost", view: NewPost },
-        { path: "/postdetail", view: PostDetail },
+        // { path: "/postdetail", view: PostDetail },
         { path: "/postdetail/:id", view: PostDetail },
     ];
 
@@ -48,6 +48,9 @@ const router = async () => {
     const newPost = new NewPost();
     newPost.bindsendEvent();
 
+    const postEvent = new PostDetail();
+    postEvent.bindBtnEvents();
+
     if (location.pathname === "/") {
         document.querySelector(".go-back").style.visibility = "hidden";
     } else {
@@ -60,8 +63,8 @@ window.addEventListener("popstate", router); // 재렌더링
 document.addEventListener("DOMContentLoaded", () => {
     document.body.addEventListener("click", (event) => {
         if (event.target.matches("[data-link]")) { // "a"
-            navigateTo(event.target.href);
             event.preventDefault(); // 새로고침 방지
+            navigateTo(event.target.href);
         }
     });
     router();

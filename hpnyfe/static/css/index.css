@@ -83,6 +83,7 @@ textarea:focus {
     height: calc(100vh - 83px);
     overflow-y: auto;
 }
+
 .container .cont-post {
     padding: 16px;
 }
@@ -286,11 +287,23 @@ textarea {
     width: 25px;
 }
 
-.comment-ul{
+.comment-ul {
     padding: 16px;
+    height: 100px;
+    overflow-y: auto;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 .comment-ul li {
     display: flex;
+    justify-content: space-between;
+}
+
+.comment-ul li+li {
+    margin-top: 12px;
 }
 
 .comment-ul li p {

@@ -48,7 +48,6 @@ export default class extends AbstractView {
 
     async sendPost(img, title, desc) {
         try {
-            console.log(img, title, desc)
             const response = await fetch(`${this.url}/post`, {
                 method: "POST",
                 headers: {
@@ -59,7 +58,8 @@ export default class extends AbstractView {
                     "content": `${desc}`,
                     "image": `${img}`
                 }),
-            }).then((response) => console.log(response));
+            })
+                .then((response) => location.replace("/"));
         } catch (err) {
             console.log(err);
         }
