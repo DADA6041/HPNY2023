@@ -7,15 +7,13 @@ export default class extends AbstractView {
     }
 
     async getHtml() {
-        const response = await fetch(`${this.url}posts`, {
+        const response = await fetch(`${this.url}/posts`, {
             method: "GET"
         })
             .then((response) => response.json())
             .then((response) => response.data.posts)
             .then((response) => response)
             .catch((err) => console.log(err));
-
-            console.log(response)
 
         return `
             <section class="cont-main">
@@ -39,9 +37,5 @@ export default class extends AbstractView {
                 </ul>
             </section>
         `
-    }
-
-    sendData() {
-        console.log("target");
     }
 }

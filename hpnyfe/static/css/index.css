@@ -239,6 +239,8 @@ textarea {
 
 .detail-img {
     height: 265px;
+    width: 100%;
+    object-fit: cover;
 }
 
 .cont-post-detail {

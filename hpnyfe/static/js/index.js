@@ -16,7 +16,7 @@ const navigateTo = (url) => {
 };
 
 const router = async () => {
-    console.log(pathToRegex("/postdetail/:id"));
+    // console.log(pathToRegex("/postdetail/:id"));
     const routes = [
         { path: "/", view: Home },
         { path: "/newpost", view: NewPost },
@@ -32,7 +32,7 @@ const router = async () => {
     });
 
     let match = pageMatches.find(pageMatch => pageMatch.result !== null);
-    console.log(match)
+    // console.log(match)
 
     if (!match) {
         match = {
@@ -42,7 +42,7 @@ const router = async () => {
     }
 
     const viewHtml = new match.route.view(getParams(match));
-    console.log(viewHtml)
+    // console.log(viewHtml)
     document.querySelector("#root").innerHTML = await viewHtml.getHtml();
 
     const newPost = new NewPost();
