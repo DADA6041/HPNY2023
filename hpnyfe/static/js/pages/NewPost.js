@@ -1,8 +1,8 @@
 import AbstractView from "./AbstractView.js";
 
 export default class extends AbstractView {
-    constructor() {
-        super();
+    constructor(params) {
+        super(params);
         this.setTitle("게시글 작성 페이지");
 
         this.btnSubmit = document.querySelector(".btn-send-post");
@@ -31,7 +31,7 @@ export default class extends AbstractView {
     }
 
     async bindsendEvent() {
-        // const accessKey = "";
+        const accessKey = "";
         const res = await fetch(`https://api.unsplash.com/photos/random?client_id=${accessKey}`, {
             method: "GET"
         })
@@ -49,7 +49,7 @@ export default class extends AbstractView {
     async sendPost(img, title, desc) {
         try {
             console.log(img, title, desc)
-            const response = await fetch("http://43.201.103.199/post", {
+            const response = await fetch(`${this.url}post`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

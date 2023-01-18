@@ -1,13 +1,13 @@
 import AbstractView from "./AbstractView.js";
 
 export default class extends AbstractView {
-    constructor() {
-        super();
+    constructor(params) {
+        super(params);
         this.setTitle("메인페이지");
     }
 
     async getHtml() {
-        const response = await fetch("http://43.201.103.199/posts", {
+        const response = await fetch(`${this.url}posts`, {
             method: "GET"
         })
             .then((response) => response.json())
@@ -16,6 +16,7 @@ export default class extends AbstractView {
             .catch((err) => console.log(err));
 
             console.log(response)
+
         return `
             <section class="cont-main">
                 <h2 class="sr-only">메인 페이지</h2>
@@ -23,8 +24,9 @@ export default class extends AbstractView {
                 <ul class="mainpage-ul">
                     ${
                         response.map((data) => {
-                            return `<li>
-                                <a href="/postdetail" data-link>
+                            return `
+                            <li>
+                                <a href="/postdetail/${data.postId}" data-link>
                                     <img class="thumbnail" src=${data.image} alt="">
                                     <div class="txt-contents">
                                         <h2>${data.title}</h2>
@@ -37,5 +39,9 @@ export default class extends AbstractView {
                 </ul>
             </section>
         `
+    }
+
+    sendData() {
+        console.log("target");
     }
 }

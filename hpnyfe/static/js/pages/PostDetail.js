@@ -1,9 +1,10 @@
 import AbstractView from "./AbstractView.js";
 
 export default class extends AbstractView {
-    constructor() {
-        super();
+    constructor(params) {
+        super(params);
         this.setTitle("게시글 상세 페이지");
+        console.log(this.params.id)
     }
 
     async getHtml() {
