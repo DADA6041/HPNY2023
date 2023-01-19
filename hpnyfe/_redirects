@@ -4,7 +4,7 @@
 /postdetail/api/* http://43.201.103.199/:splat 200
 /postdetail/api/* http://43.201.103.199/:splat 201
 
-/postedit/api/* http://43.201.103.199/:splat 200
-/postedit/api/* http://43.201.103.199/:splat 201
+/edit/api/* http://43.201.103.199/:splat 200
+/edit/api/* http://43.201.103.199/:splat 201
 
 /* / 200
