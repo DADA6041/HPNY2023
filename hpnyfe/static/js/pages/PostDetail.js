@@ -18,7 +18,7 @@ export default class extends AbstractView {
         const deleteIcon = "https://raw.githubusercontent.com/DADA6041/HPNY2023/main/hpnyfe/static/images/delete_icon.png";
         const sendIcon = "https://raw.githubusercontent.com/DADA6041/HPNY2023/main/hpnyfe/static/images/send_icon.png";
         console.log(this.params.id)
-        const response = await fetch(`${this.url}/post/${this.params.id}`, {
+        const response = await fetch(`api/post/${this.params.id}`, {
             method: "GET"
         })
             .then((response) => response.json())
@@ -112,7 +112,7 @@ export default class extends AbstractView {
 
     async deletePost(link) {
         try {
-            const res = await fetch(`${this.url}/post/${link}`, {
+            const res = await fetch(`api/post/${link}`, {
                 method: "DELETE",
             })
                 .then((res) => res.json())
@@ -124,7 +124,7 @@ export default class extends AbstractView {
 
     async sendComment(link, commentdesc) {
         try {
-            const response = await fetch(`${this.url}/comment/${link}`, {
+            const response = await fetch(`api/comment/${link}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -141,7 +141,7 @@ export default class extends AbstractView {
 
     async deleteComment(commentId) {
         try {
-            const res = await fetch(`${this.url}/comment/${commentId}`, {
+            const res = await fetch(`api/comment/${commentId}`, {
                 method: "DELETE",
             })
                 .then((res) => res.json())

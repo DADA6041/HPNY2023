@@ -13,7 +13,7 @@ export default class extends AbstractView {
 
     async getHtml() {
 
-        const response = await fetch(`${this.url}/post/${this.params.id}`, {
+        const response = await fetch(`api/post/${this.params.id}`, {
             method: "GET"
         })
             .then((response) => response.json())
@@ -51,7 +51,7 @@ export default class extends AbstractView {
 
     async sendEditPost(link, img, title, desc) {
         try {
-            const response = await fetch(`${this.url}/post/${link}`, {
+            const response = await fetch(`api/post/${link}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

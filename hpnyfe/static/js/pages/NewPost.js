@@ -48,7 +48,7 @@ export default class extends AbstractView {
 
     async sendPost(img, title, desc) {
         try {
-            const response = await fetch(`${this.url}/post`, {
+            const response = await fetch(`api/post`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
