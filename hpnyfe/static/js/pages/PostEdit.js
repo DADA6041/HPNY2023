@@ -14,16 +14,12 @@ export default class extends AbstractView {
     async getHtml() {
 
         const response = await fetch(`api/post/${this.params.id}`, {
-            method: "GET",
-            headers: {
-                "Content-type": "application/json",
-            },
+            method: "GET"
         })
             .then((response) => response.json())
             .then((response) => response.data)
             .then((response) => response)
             .catch((err) => console.log(err));
-        console.log(response)
 
         return `
             <section class="cont-edit-post">

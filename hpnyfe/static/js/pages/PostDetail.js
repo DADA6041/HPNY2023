@@ -17,12 +17,9 @@ export default class extends AbstractView {
         const bigDeleteIcon = "https://raw.githubusercontent.com/DADA6041/HPNY2023/main/hpnyfe/static/images/big_delete_icon.png";
         const deleteIcon = "https://raw.githubusercontent.com/DADA6041/HPNY2023/main/hpnyfe/static/images/delete_icon.png";
         const sendIcon = "https://raw.githubusercontent.com/DADA6041/HPNY2023/main/hpnyfe/static/images/send_icon.png";
-        console.log(this.params.id)
+
         const response = await fetch(`api/post/${this.params.id}`, {
-            method: "GET",
-            headers: {
-                "Content-type": "application/json",
-            },
+            method: "GET"
         })
             .then((response) => response.json())
             .then((response) => response.data)
@@ -55,10 +52,10 @@ export default class extends AbstractView {
                     <h3 class="sr-only">댓글 섹션</h3>
                     <ul class="comment-ul">
                         ${(!response.comments.length) ?
-                ""
-                :
-                response.comments.map((data) => {
-                    return `
+                        ""
+                        :
+                        response.comments.map((data) => {
+                                return `
                                     <li>
                                         <p class="comment-desc">${data.content}</p>
                                         <button type="button" class="btn-delete-comment" data-comment-id=${data.commentId}>
@@ -66,8 +63,8 @@ export default class extends AbstractView {
                                         </button>
                                     </li>
                                     `
-                }).join("")
-            }
+                            }).join("")
+                        }
                     </ul>
 
                     <form class="form-send-comment">
@@ -87,7 +84,7 @@ export default class extends AbstractView {
 
         this.btnPostEdit.addEventListener("click", (e) => {
             // e.preventDefault();
-            location.href = `/edit/${link}`;
+            location.href=`/edit/${link}`;
         })
 
         this.btnPostDelete.addEventListener("click", (e) => {
@@ -132,7 +129,7 @@ export default class extends AbstractView {
                     "content": `${commentdesc}`,
                 }),
             })
-                .then((response) => location.reload()); /* console.log(response) */
+                .then((response) => location.reload());
         } catch (err) {
             console.log(err);
         }
