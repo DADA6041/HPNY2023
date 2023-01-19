@@ -3,7 +3,7 @@ import AbstractView from "./AbstractView.js";
 export default class extends AbstractView {
     constructor(params) {
         super(params);
-        this.setTitle("게시글 작성 페이지");
+        this.setTitle("HPNY 2023");
 
         this.btnSubmit = document.querySelector(".btn-send-post");
         this.titleInp = document.querySelector(".inp-title-area");
@@ -33,10 +33,7 @@ export default class extends AbstractView {
     async bindsendEvent() {
         const accessKey = "3MpFsGVRUmIbvbKL_5NP-8vQVN55Pz6xn2WM3OFdZF8";
         const res = await fetch(`https://api.unsplash.com/photos/random?client_id=${accessKey}`, {
-            method: "GET",
-            headers: {
-                "Accept": "application/json",
-            },
+            method: "GET"
         })
             .then(res => res.json())
             .then((res) => res.urls.regular)

@@ -3,7 +3,7 @@ import AbstractView from "./AbstractView.js";
 export default class extends AbstractView {
     constructor(params) {
         super(params);
-        this.setTitle("게시글 상세 페이지");
+        this.setTitle("HPNY 2023");
 
         this.btnPostEdit = document.querySelector(".btn-edit");
         this.btnPostDelete = document.querySelector(".btn-delete-post");
@@ -21,7 +21,7 @@ export default class extends AbstractView {
         const response = await fetch(`api/post/${this.params.id}`, {
             method: "GET",
             headers: {
-                "Accept": "application/json",
+                "Content-type": "application/json",
             },
         })
             .then((response) => response.json())
@@ -55,10 +55,10 @@ export default class extends AbstractView {
                     <h3 class="sr-only">댓글 섹션</h3>
                     <ul class="comment-ul">
                         ${(!response.comments.length) ?
-                        ""
-                        :
-                        response.comments.map((data) => {
-                                return `
+                ""
+                :
+                response.comments.map((data) => {
+                    return `
                                     <li>
                                         <p class="comment-desc">${data.content}</p>
                                         <button type="button" class="btn-delete-comment" data-comment-id=${data.commentId}>
@@ -66,8 +66,8 @@ export default class extends AbstractView {
                                         </button>
                                     </li>
                                     `
-                            }).join("")
-                        }
+                }).join("")
+            }
                     </ul>
 
                     <form class="form-send-comment">
@@ -84,14 +84,10 @@ export default class extends AbstractView {
 
     async bindBtnEvents() {
         let link = document.location.href.split("/").slice(-1)[0];
-        // console.log(link);
-        // console.log(this.btnPostEdit);
-        // console.log(this.btnPostDelete);
-        // console.log(this.btnCommentDelete);
-        // console.log(this.commentInp);
+
         this.btnPostEdit.addEventListener("click", (e) => {
             // e.preventDefault();
-            location.href=`/edit/${link}`;
+            location.href = `/edit/${link}`;
         })
 
         this.btnPostDelete.addEventListener("click", (e) => {

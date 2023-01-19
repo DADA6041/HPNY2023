@@ -3,7 +3,7 @@ import AbstractView from "./AbstractView.js";
 export default class extends AbstractView {
     constructor(params) {
         super(params);
-        this.setTitle("게시글 수정 페이지");
+        this.setTitle("HPNY 2023");
 
         this.btnSubmit = document.querySelector(".btn-send-post");
         this.imgSrc = document.querySelector(".detail-img");
@@ -16,7 +16,7 @@ export default class extends AbstractView {
         const response = await fetch(`api/post/${this.params.id}`, {
             method: "GET",
             headers: {
-                "Accept": "application/json",
+                "Content-type": "application/json",
             },
         })
             .then((response) => response.json())
