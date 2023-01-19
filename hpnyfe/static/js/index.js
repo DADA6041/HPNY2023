@@ -1,6 +1,7 @@
 import Home from "./pages/Home.js";
 import NewPost from "./pages/NewPost.js";
 import PostDetail from "./pages/PostDetail.js";
+import PostEdit from "./pages/PostEdit.js";
 
 const pathToRegex = (path) => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
 
@@ -20,8 +21,8 @@ const router = async () => {
     const routes = [
         { path: "/", view: Home },
         { path: "/newpost", view: NewPost },
-        // { path: "/postdetail", view: PostDetail },
         { path: "/postdetail/:id", view: PostDetail },
+        { path: "/edit/:id", view: PostEdit },
     ];
 
     const pageMatches = routes.map((route) => {
@@ -50,6 +51,9 @@ const router = async () => {
 
     const postEvent = new PostDetail();
     postEvent.bindBtnEvents();
+
+    const editEvent = new PostEdit();
+    editEvent.bindEditSendEvent();
 
     if (location.pathname === "/") {
         document.querySelector(".go-back").style.visibility = "hidden";

@@ -26,22 +26,23 @@ export default class extends AbstractView {
             .then((response) => response)
             .catch((err) => console.log(err));
 
-
+        const postTime = response.post.createdAt.split("T")[0].split("-");
         return `
             <section class="cont-postdetail">
                 <h2 class="sr-only">게시글 상세 페이지</h2>
-                <img class="detail-img" src=${response.post.image} alt="">
+                <img class="detail-img" 
+                onerror="this.src='https://raw.githubusercontent.com/DADA6041/HPNY2023/main/hpnyfe/static/images/test.png';" src=${response.post.image} alt="">
                 <section class="cont-post-detail">
                     <h3 class="sr-only">게시글 세부 섹션</h3>
                     <strong class="postdetail-title">${response.post.title}</strong>
-                    <time class="postdetail-date">${response.post.createdAt}</time>
+                    <time class="postdetail-date">${postTime[0]}. ${postTime[1]}. ${postTime[2]}</time>
                     <p class="postdetail-desc">
                         ${response.post.content}
                     </p>
                     <div class="btn-wrap">
                         <button type="button" class="btn-edit">
                             <img src=${editIcon} alt="수정하기">
-                        </button>
+                        </a>
                         <button type="button" class="btn-delete-post">
                             <img src=${bigDeleteIcon} alt="삭제하기">
                         </button>
@@ -86,8 +87,8 @@ export default class extends AbstractView {
         // console.log(this.btnCommentDelete);
         // console.log(this.commentInp);
         this.btnPostEdit.addEventListener("click", (e) => {
-            e.preventDefault();
-            console.log('수정');
+            // e.preventDefault();
+            location.href=`/edit/${link}`;
         })
 
         this.btnPostDelete.addEventListener("click", (e) => {
@@ -105,8 +106,6 @@ export default class extends AbstractView {
             button.addEventListener("click", (e) => {
                 e.preventDefault();
                 this.deleteComment(e.currentTarget.dataset.commentId);
-                // console.log('댓글 삭제');
-                // console.log(e.currentTarget.dataset.commentId);
             })
         })
     }

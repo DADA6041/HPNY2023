@@ -31,7 +31,7 @@ export default class extends AbstractView {
     }
 
     async bindsendEvent() {
-        const accessKey = "";
+        const accessKey = "3MpFsGVRUmIbvbKL_5NP-8vQVN55Pz6xn2WM3OFdZF8";
         const res = await fetch(`https://api.unsplash.com/photos/random?client_id=${accessKey}`, {
             method: "GET"
         })
@@ -59,7 +59,7 @@ export default class extends AbstractView {
                     "image": `${img}`
                 }),
             })
-                .then((response) => location.replace("/"));
+                .then((response) => history.back());
         } catch (err) {
             console.log(err);
         }

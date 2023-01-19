@@ -14,7 +14,7 @@
 }
 
 body {
-    background-color: #d7b5b5;
+    background-color: #FFF2F2;
 }
 
 button {
@@ -293,6 +293,12 @@ textarea {
     overflow-y: auto;
 }
 
+.comment-ul li p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -303,7 +309,7 @@ textarea {
 }
 
 .comment-ul li+li {
-    margin-top: 12px;
+    margin-top: 15px;
 }
 
 .comment-ul li p {
@@ -355,4 +361,18 @@ textarea {
 
 .form-send-comment button img {
     width: 23px;
+}
+
+/* postedit */
+.cont-edit-post form{
+    padding: 20px 16px 11px;
+}
+
+.cont-edit-post .btn-submit-edit{
+    margin-top: 0;
+}
+
+.cont-edit-post textarea{
+    height: 60px;
+    overflow-y: auto;
 }

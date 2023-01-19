@@ -25,7 +25,8 @@ export default class extends AbstractView {
                             return `
                             <li>
                                 <a href="/postdetail/${data.postId}" data-link>
-                                    <img class="thumbnail" src=${data.image} alt="">
+                                    <img class="thumbnail" src=${data.image}
+                                        onerror="this.src='https://raw.githubusercontent.com/DADA6041/HPNY2023/main/hpnyfe/static/images/test.png';" alt="">
                                     <div class="txt-contents">
                                         <h2>${data.title}</h2>
                                         <p>${data.content}</p>
@@ -38,4 +39,5 @@ export default class extends AbstractView {
             </section>
         `
     }
+    
 }
