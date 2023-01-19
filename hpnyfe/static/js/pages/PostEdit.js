@@ -14,7 +14,10 @@ export default class extends AbstractView {
     async getHtml() {
 
         const response = await fetch(`api/post/${this.params.id}`, {
-            method: "GET"
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+            },
         })
             .then((response) => response.json())
             .then((response) => response.data)

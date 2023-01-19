@@ -8,7 +8,10 @@ export default class extends AbstractView {
 
     async getHtml() {
         const response = await fetch(`api/posts`, {
-            method: "GET"
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+            },
         })
             .then((response) => response.json())
             .then((response) => response.data.posts)
@@ -20,9 +23,8 @@ export default class extends AbstractView {
                 <h2 class="sr-only">메인 페이지</h2>
                 <a href="/newpost" class="btn-new-post" data-link>새 글 작성하기</a>
                 <ul class="mainpage-ul">
-                    ${
-                        response.map((data) => {
-                            return `
+                    ${response.map((data) => {
+            return `
                             <li>
                                 <a href="/postdetail/${data.postId}" data-link>
                                     <img class="thumbnail" src=${data.image}
@@ -33,11 +35,11 @@ export default class extends AbstractView {
                                     </div>
                                 </a>
                             </li>`
-                        }).join("")
-                    }
+        }).join("")
+            }
                 </ul>
             </section>
         `
     }
-    
+
 }

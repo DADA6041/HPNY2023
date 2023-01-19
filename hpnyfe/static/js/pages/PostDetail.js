@@ -19,7 +19,10 @@ export default class extends AbstractView {
         const sendIcon = "https://raw.githubusercontent.com/DADA6041/HPNY2023/main/hpnyfe/static/images/send_icon.png";
         console.log(this.params.id)
         const response = await fetch(`api/post/${this.params.id}`, {
-            method: "GET"
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+            },
         })
             .then((response) => response.json())
             .then((response) => response.data)
