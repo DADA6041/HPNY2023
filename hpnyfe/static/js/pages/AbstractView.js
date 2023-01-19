@@ -1,7 +1,7 @@
 export default class {
     constructor(params) {
         this.params = params;
-        this.url = "http://43.201.103.199"
+        this.url = "api"
         // console.log(this.params)
     }
 
